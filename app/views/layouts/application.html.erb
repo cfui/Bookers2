@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  	<%= csrf_meta_tags %>
+  	<%= csp_meta_tag %>
+
+  	<%= stylesheet_link_tag   "application", media: "all", "date-turbolinks-track": "reload" %>
+  	<%= javascript_include_tag "application", "date-turbolinks-track": "reload" %>
+  </head>
+
+  <body>
+  	<div class="page-header">
+	<h2>Bookers</h2>
+
+	  	<% if user_signed_in? %>
+	        <%= link_to "home", user_path(current_user) ,class: "glyphicon glyphicon-home"%>
+	        <%= link_to "users", users_path ,class: "glyphicon glyphicon-user"%>
+	        <%= link_to "books", books_path ,class: "glyphicon glyphicon-book"%>
+	        <%= link_to "logout", destroy_user_session_path , method: :delete ,class: "glyphicon glyphicon-log-out"%>
+	    <% else %>
+		    <span class="glyphicon glyphicon-home" aria-hidden="true"><%= link_to "home", "/" %></span>
+			<span class="glyphicon glyphicon-link" aria-hidden="true"><%= link_to "about", "/home/about" %></span>
+			<span class="glyphicon glyphicon-edit" aria-hidden="true"></span><%= link_to "sign up", "/users/sign_up" %>
+			<span class="glyphicon glyphicon-log-in" aria-hidden="true"></span><%= link_to " login", "/users/sign_in" %>
+
+		<% end %>
+	</div>
+    <%= yield %>
+  </body>
+</html>

@@ -1,0 +1,34 @@
+    <h1>Books</h1>
+    
+
+        </div>
+    <table class="table table-hover">
+    <thead>
+        <tr>
+            <th>image</th>
+            <th>name</th>
+            <th></th>
+        </tr>
+    </thead>
+
+
+      <tbody>
+    <% @users.each do |user| %>
+        <tr>
+            <div class="form-group has-icon">
+                <div class="user-edit-image">
+
+                <td>
+                    <%= attachment_image_tag @user, :profile_image, :fill, 60, 60, class: "img-circle pull-left profile-thumb", fallback: "no_image.jpg"%>
+                </td>
+                </div>
+            </div>
+
+            <td><span><%= user.name %></span></td>
+            <td><span><%= link_to "show", user_path(user) %></span></td>
+
+        </tr>
+    <% end %>
+      </tbody>
+    </table>
+    
